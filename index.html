@@ -1,0 +1,1540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Education Hub — Atlantic Coast Mortgage</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <noscript><style>[data-reveal]{opacity:1!important;transform:none!important;}</style></noscript>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='4' fill='%230A50B1'/%3E%3Crect x='9' y='9' width='82' height='82' fill='none' stroke='%23fff' stroke-width='4.5'/%3E%3Ctext x='50' y='50' fill='%23fff' font-family='Arial Black,sans-serif' font-weight='700' font-size='24' text-anchor='middle' dominant-baseline='middle' letter-spacing='3'%3EACM%3C/text%3E%3C/svg%3E">
+  <style>
+
+    /* ─── BRAND TOKENS ───────────────────────────────────────── */
+    :root {
+      --color-primary:       #0A50B1;
+      --color-navy:          #002E5F;
+      --color-accent:        #45CE86;
+      --color-bg-light:      #EEF6FF;
+      --color-text:          #313131;
+      --color-nav-hover:     #015BD7;
+      --color-hero-subhead:  #B8D4FF;
+      --color-border:        #E0E0E0;
+      --color-border-subtle: #E8EEF6;
+      --color-text-muted:    #666666;
+      --color-footer-muted:  #8BAFD4;
+    }
+
+    /* ─── RESET ──────────────────────────────────────────────── */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* ─── BASE ───────────────────────────────────────────────── */
+    body {
+      font-family: "Open Sans", sans-serif;
+      color: var(--color-text);
+      line-height: 1.6;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: "Halyard Display", "Open Sans", sans-serif;
+      font-weight: 700;
+    }
+
+    /* ─── NAVBAR ─────────────────────────────────────────────── */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: #fff;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .navbar__inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 68px;
+      display: flex;
+      align-items: center;
+    }
+
+    /* ── Logo ── */
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      flex-shrink: 0;
+      margin-right: 36px;
+    }
+
+    .logo__badge {
+      width: 42px;
+      height: 42px;
+      display: block;
+      flex-shrink: 0;
+    }
+
+    .logo__text {
+      color: var(--color-navy);
+      font-family: "Open Sans", sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      line-height: 1.3;
+    }
+
+    /* ── Nav links ── */
+    .navbar__nav {
+      display: flex;
+      align-items: stretch;
+      list-style: none;
+      flex: 1;
+      height: 68px;
+    }
+
+    .navbar__nav li {
+      display: flex;
+      align-items: center;
+    }
+
+    .navbar__nav a {
+      display: flex;
+      align-items: center;
+      padding: 0 13px;
+      color: var(--color-text);
+      text-decoration: none;
+      font-family: "Open Sans", sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      white-space: nowrap;
+      border-bottom: 2px solid transparent;
+      transition: color 0.15s;
+      height: 100%;
+    }
+
+    .navbar__nav a:hover {
+      color: var(--color-nav-hover);
+    }
+
+    .navbar__nav a.active {
+      color: var(--color-primary);
+      border-bottom-color: var(--color-primary);
+      font-weight: 600;
+    }
+
+    /* ── Right-side actions ── */
+    .navbar__actions {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-shrink: 0;
+    }
+
+    .portal-link {
+      color: var(--color-text);
+      text-decoration: none;
+      font-family: "Open Sans", sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      white-space: nowrap;
+      transition: color 0.15s;
+    }
+
+    .portal-link:hover {
+      color: var(--color-nav-hover);
+    }
+
+    .btn-apply {
+      display: inline-block;
+      background: var(--color-accent);
+      color: #fff;
+      text-decoration: none;
+      font-family: "Open Sans", sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 10px 22px;
+      border-radius: 50px;
+      white-space: nowrap;
+    }
+
+    /* ── Hamburger — mobile only ── */
+    .navbar__hamburger {
+      display: none;
+      font-size: 24px;
+      color: var(--color-navy);
+      margin-left: auto;
+      cursor: default;
+      user-select: none;
+    }
+
+    /* ─── SECTION BACKGROUND LOCKS ───────────────────────────── */
+    /* Final backgrounds set at Phase 1; Phase 5 QA only verifies. */
+    #hero         { background: url('hero.jpg') center center / cover no-repeat; }
+    #readiness    { background: var(--color-primary); }
+    #buyer-stages { background: #fff; }
+    #articles     { background: var(--color-bg-light); }
+    #trust        { background: var(--color-navy); }
+    #footer-cta   { background: var(--color-bg-light); }
+    #footer       { background: var(--color-navy); }
+
+    /* ─── HERO ───────────────────────────────────────────────── */
+    .hero {
+      padding: 100px 24px 108px;
+    }
+
+    .hero__inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .hero__copy {
+      max-width: 620px;
+    }
+
+    .hero__eyebrow {
+      display: inline-block;
+      color: var(--color-accent);
+      font-family: "Open Sans", sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .hero__headline {
+      color: #fff;
+      font-size: 52px;
+      line-height: 1.10;
+      letter-spacing: -0.01em;
+      margin-bottom: 20px;
+    }
+
+    .hero__subhead {
+      color: var(--color-hero-subhead);
+      font-family: "Open Sans", sans-serif;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 1.7;
+      margin-bottom: 36px;
+      max-width: 480px;
+    }
+
+    .btn-hero-cta {
+      display: inline-block;
+      background: var(--color-accent);
+      color: #fff;
+      text-decoration: none;
+      font-family: "Open Sans", sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      padding: 14px 32px;
+      border-radius: 50px;
+      transition: opacity 0.15s;
+    }
+
+    .btn-hero-cta:hover {
+      opacity: 0.88;
+    }
+
+    /* ─── READINESS TEASER ───────────────────────────────────── */
+    .readiness {
+      padding: 80px 24px 88px;
+    }
+
+    .readiness__inner {
+      max-width: 680px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    /* Decorative step-indicator — hints at a 3-question flow */
+    .readiness__steps {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      margin-bottom: 44px;
+    }
+
+    .readiness__step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .readiness__step-circle {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 2px solid rgba(255, 255, 255, 0.30);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255, 255, 255, 0.45);
+      font-family: "Open Sans", sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .readiness__step-label {
+      color: rgba(255, 255, 255, 0.40);
+      font-family: "Open Sans", sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .readiness__step-connector {
+      width: 64px;
+      height: 2px;
+      background: rgba(255, 255, 255, 0.18);
+      margin: 0 6px;
+      margin-bottom: 26px;
+      flex-shrink: 0;
+    }
+
+    .readiness__title {
+      color: #fff;
+      font-size: 44px;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      margin-bottom: 18px;
+    }
+
+    .readiness__subtext {
+      color: rgba(255, 255, 255, 0.82);
+      font-family: "Open Sans", sans-serif;
+      font-size: 18px;
+      line-height: 1.7;
+      margin-bottom: 36px;
+    }
+
+    .btn-readiness-cta {
+      display: inline-block;
+      background: var(--color-accent);
+      color: #fff;
+      text-decoration: none;
+      font-family: "Open Sans", sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      padding: 14px 32px;
+      border-radius: 50px;
+      transition: opacity 0.15s;
+    }
+
+    .btn-readiness-cta:hover {
+      opacity: 0.88;
+    }
+
+    /* ─── BUYER STAGES ───────────────────────────────────────── */
+    .stages {
+      padding: 88px 24px 96px;
+    }
+
+    .stages__inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .stages__heading {
+      color: var(--color-navy);
+      font-size: 38px;
+      line-height: 1.2;
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .stages__grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 28px;
+    }
+
+    .stages__col {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .stages__icon {
+      width: 52px;
+      height: 52px;
+      color: var(--color-primary);
+      margin-bottom: 20px;
+    }
+
+    .stages__icon svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .stages__col-title {
+      color: var(--color-navy);
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    .stages__col-desc {
+      color: var(--color-text);
+      font-family: "Open Sans", sans-serif;
+      font-size: 15px;
+      line-height: 1.65;
+      margin-bottom: 20px;
+    }
+
+    .stages__topics {
+      list-style: none;
+      flex: 1;
+      margin-bottom: 24px;
+    }
+
+    .stages__topics li {
+      border-bottom: 1px solid var(--color-border-subtle);
+    }
+
+    .stages__topics li:first-child {
+      border-top: 1px solid var(--color-border-subtle);
+    }
+
+    .stages__topics a {
+      display: block;
+      padding: 10px 0;
+      color: var(--color-primary);
+      text-decoration: none;
+      font-family: "Open Sans", sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.15s;
+    }
+
+    .stages__topics a:hover {
+      color: var(--color-nav-hover);
+    }
+
+    .stages__tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      display: inline-block;
+      background: var(--color-bg-light);
+      color: var(--color-primary);
+      font-family: "Open Sans", sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 50px;
+      letter-spacing: 0.02em;
+    }
+
+    /* ─── FEATURED ARTICLES ──────────────────────────────────── */
+    .articles-wrap {
+      padding: 88px 24px 96px;
+    }
+
+    .articles-wrap__inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .articles-wrap__heading {
+      color: var(--color-navy);
+      font-size: 38px;
+      line-height: 1.2;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .articles-wrap__subhead {
+      color: var(--color-text);
+      font-family: "Open Sans", sans-serif;
+      font-size: 16px;
+      text-align: center;
+      margin-bottom: 52px;
+    }
+
+    .articles__grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 28px;
+    }
+
+    .article-card {
+      background: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0, 46, 95, 0.08);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .article-card__image {
+      position: relative;
+      height: 200px;
+      background: var(--color-primary);
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .article-card__image img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .article-card__image::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.15);
+      z-index: 1;
+    }
+
+    .article-card__caption {
+      position: relative;
+      z-index: 1;
+      color: rgba(255, 255, 255, 0.88);
+      font-family: "Open Sans", sans-serif;
+      font-size: 12px;
+      font-style: italic;
+      text-align: center;
+      padding: 0 20px;
+      line-height: 1.6;
+    }
+
+    .article-card__body {
+      padding: 20px 22px 24px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .article-card__category {
+      display: inline-block;
+      background: var(--color-bg-light);
+      color: var(--color-primary);
+      font-family: "Open Sans", sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 50px;
+      letter-spacing: 0.04em;
+      margin-bottom: 12px;
+      align-self: flex-start;
+    }
+
+    .article-card__title {
+      color: var(--color-navy);
+      font-family: "Halyard Display", "Open Sans", sans-serif;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 1.35;
+      margin-bottom: 10px;
+    }
+
+    .article-card__excerpt {
+      color: var(--color-text-muted);
+      font-family: "Open Sans", sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 16px;
+      flex: 1;
+    }
+
+    .article-card__link {
+      color: var(--color-primary);
+      text-decoration: none;
+      font-family: "Open Sans", sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      transition: color 0.15s;
+      align-self: flex-start;
+    }
+
+    .article-card__link:hover {
+      color: var(--color-nav-hover);
+    }
+
+    /* ─── TRUST BAND ─────────────────────────────────────────── */
+    .trust {
+      padding: 80px 24px 72px;
+    }
+
+    .trust__inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .trust__grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .trust__stat {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .trust__stat-icon {
+      width: 44px;
+      height: 44px;
+      color: var(--color-accent);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .trust__stat-icon svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .trust__stat-number {
+      color: #fff;
+      font-family: "Halyard Display", "Open Sans", sans-serif;
+      font-weight: 700;
+      font-size: 32px;
+      line-height: 1.1;
+      margin-bottom: 4px;
+    }
+
+    .trust__stat-label {
+      color: rgba(255, 255, 255, 0.72);
+      font-family: "Open Sans", sans-serif;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .trust__disclaimer {
+      text-align: center;
+      color: rgba(255, 255, 255, 0.60);
+      font-family: "Open Sans", sans-serif;
+      font-size: 12px;
+      border-top: 1px solid rgba(255, 255, 255, 0.10);
+      padding-top: 24px;
+    }
+
+    /* ─── FOOTER CTA BAND ────────────────────────────────────── */
+    .footer-cta {
+      padding: 80px 24px 88px;
+      text-align: center;
+    }
+
+    .footer-cta__inner {
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    .footer-cta__headline {
+      color: var(--color-navy);
+      font-size: 36px;
+      line-height: 1.2;
+      margin-bottom: 14px;
+    }
+
+    .footer-cta__subtext {
+      color: var(--color-text);
+      font-family: "Open Sans", sans-serif;
+      font-size: 17px;
+      line-height: 1.7;
+      margin-bottom: 32px;
+    }
+
+    .btn-footer-cta {
+      display: inline-block;
+      background: var(--color-accent);
+      color: #fff;
+      text-decoration: none;
+      font-family: "Open Sans", sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      padding: 14px 32px;
+      border-radius: 50px;
+      transition: opacity 0.15s;
+    }
+
+    .btn-footer-cta:hover {
+      opacity: 0.88;
+    }
+
+    /* ─── MAIN FOOTER ─────────────────────────────────────────── */
+    .site-footer {
+      padding: 64px 24px 0;
+    }
+
+    .site-footer__inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .site-footer__top {
+      display: grid;
+      grid-template-columns: auto 1fr 1fr 1fr;
+      gap: 48px 64px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    /* Footer logo variant */
+    .logo--footer .logo__text {
+      color: #fff;
+    }
+
+    .site-footer__col-heading {
+      color: #fff;
+      font-family: "Open Sans", sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .site-footer__links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .site-footer__links a {
+      color: rgba(255, 255, 255, 0.68);
+      text-decoration: none;
+      font-family: "Open Sans", sans-serif;
+      font-size: 14px;
+      transition: color 0.15s;
+    }
+
+    .site-footer__links a:hover {
+      color: #fff;
+    }
+
+    .site-footer__bottom {
+      padding: 20px 0 24px;
+      text-align: center;
+      color: var(--color-footer-muted);
+      font-family: "Open Sans", sans-serif;
+      font-size: 12px;
+    }
+
+    /* ─── TABLET (768–1023px) ────────────────────────────────── */
+    @media (min-width: 768px) and (max-width: 1023px) {
+      .navbar__nav a {
+        padding: 0 7px;
+        font-size: 12px;
+      }
+
+      .logo__text {
+        font-size: 11px;
+      }
+
+      .portal-link {
+        display: none;
+      }
+
+      .hero__headline {
+        font-size: 40px;
+      }
+
+      .readiness__title {
+        font-size: 36px;
+      }
+
+      .stages__grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+      }
+
+      .stages__heading {
+        font-size: 32px;
+        margin-bottom: 40px;
+      }
+
+      .articles__grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .articles-wrap__heading {
+        font-size: 32px;
+      }
+
+      .trust__grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 32px;
+      }
+
+      .trust__stat-number {
+        font-size: 28px;
+      }
+
+      .footer-cta__headline {
+        font-size: 30px;
+      }
+
+      .site-footer__top {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px 32px;
+      }
+    }
+
+    /* ═══════════════════════════════════════════════════════
+       DESIGN POLISH — animations, depth, micro-interactions
+       ═══════════════════════════════════════════════════════ */
+
+    html { scroll-behavior: smooth; }
+
+    /* ─── KEYFRAMES ──────────────────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-10px); }
+    }
+    @keyframes pulseRing {
+      0%   { box-shadow: 0 0 0 0 rgba(255,255,255,0.30); }
+      70%  { box-shadow: 0 0 0 10px rgba(255,255,255,0); }
+      100% { box-shadow: 0 0 0 0 rgba(255,255,255,0); }
+    }
+
+    /* ─── SCROLL REVEAL ──────────────────────────────────── */
+    [data-reveal] {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+                  transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    [data-reveal].is-visible { opacity: 1; transform: none; transition-delay: 0s; }
+    [data-delay="1"] { transition-delay: 0.10s; }
+    [data-delay="2"] { transition-delay: 0.20s; }
+    [data-delay="3"] { transition-delay: 0.30s; }
+    [data-delay="4"] { transition-delay: 0.40s; }
+    [data-delay="5"] { transition-delay: 0.50s; }
+
+    /* ─── HERO DEPTH + LOAD ANIMATIONS ──────────────────── */
+    #hero { position: relative; overflow: hidden; }
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to right,
+        rgba(0, 46, 95, 0.93) 0%,
+        rgba(0, 46, 95, 0.72) 45%,
+        rgba(0, 46, 95, 0.28) 100%
+      );
+      pointer-events: none;
+      z-index: 0;
+    }
+    .hero { position: relative; z-index: 1; }
+    .hero__eyebrow  { animation: fadeUp 0.75s cubic-bezier(0.22,1,0.36,1) 0.00s both; }
+    .hero__headline { animation: fadeUp 0.75s cubic-bezier(0.22,1,0.36,1) 0.12s both; }
+    .hero__subhead  { animation: fadeUp 0.75s cubic-bezier(0.22,1,0.36,1) 0.24s both; }
+    .btn-hero-cta   { animation: fadeUp 0.75s cubic-bezier(0.22,1,0.36,1) 0.38s both; }
+
+    /* ─── READINESS DEPTH ────────────────────────────────── */
+    #readiness { position: relative; overflow: hidden; }
+    #readiness::before {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(255,255,255,0.075) 0%, transparent 65%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    #readiness::after {
+      content: '';
+      position: absolute;
+      bottom: -120px; right: -120px;
+      width: 400px; height: 400px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.065);
+      box-shadow: 0 0 0 80px rgba(255,255,255,0.02);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .readiness { position: relative; z-index: 1; }
+    .readiness__step-circle { animation: pulseRing 2.8s ease-out infinite; }
+    .readiness__step:nth-child(3) .readiness__step-circle { animation-delay: 0.50s; }
+    .readiness__step:nth-child(5) .readiness__step-circle { animation-delay: 1.00s; }
+
+    /* ─── BUTTON MICRO-INTERACTIONS ──────────────────────── */
+    .btn-hero-cta, .btn-readiness-cta, .btn-footer-cta {
+      transition: opacity 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease;
+    }
+    .btn-hero-cta:hover, .btn-readiness-cta:hover, .btn-footer-cta:hover {
+      box-shadow: 0 6px 28px rgba(69,206,134,0.40);
+      transform: translateY(-2px);
+    }
+    .btn-apply {
+      transition: opacity 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease;
+    }
+    .btn-apply:hover {
+      box-shadow: 0 4px 18px rgba(69,206,134,0.35);
+      transform: translateY(-1px);
+    }
+
+    /* ─── STAGES COLUMN HOVER ────────────────────────────── */
+    .stages__col {
+      padding: 20px 16px;
+      border-radius: 12px;
+      border: 1px solid transparent;
+      transition: box-shadow 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
+    }
+    .stages__col:hover {
+      box-shadow: 0 8px 32px rgba(10,80,177,0.09);
+      transform: translateY(-4px);
+      border-color: rgba(10,80,177,0.08);
+    }
+
+    /* ─── ARTICLE CARD HOVER ─────────────────────────────── */
+    .article-card {
+      transition: transform 0.28s cubic-bezier(0.22,1,0.36,1),
+                  box-shadow 0.28s cubic-bezier(0.22,1,0.36,1);
+    }
+    .article-card:hover {
+      transform: translateY(-7px);
+      box-shadow: 0 18px 48px rgba(0,46,95,0.14);
+    }
+
+    /* ─── TRUST SECTION DEPTH ────────────────────────────── */
+    #trust { position: relative; overflow: hidden; }
+    #trust::before {
+      content: '';
+      position: absolute;
+      top: -60px; left: -60px;
+      width: 300px; height: 300px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.05);
+      box-shadow: 0 0 0 80px rgba(255,255,255,0.015);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .trust { position: relative; z-index: 1; }
+
+    /* ─── NARROW TABLET: ease stage-col padding ─────────────── */
+    @media (min-width: 768px) and (max-width: 1023px) {
+      .stages__col { padding-left: 12px; padding-right: 12px; }
+    }
+
+    /* ─── REDUCED MOTION: disable all decorative animation ───── */
+    @media (prefers-reduced-motion: reduce) {
+      [data-reveal] {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+      .hero__eyebrow, .hero__headline, .hero__subhead, .btn-hero-cta {
+        animation: none;
+      }
+      .readiness__step-circle {
+        animation: none;
+      }
+    }
+
+    /* ─── MOBILE (<768px) ────────────────────────────────────── */
+    @media (max-width: 767px) {
+      .navbar__nav,
+      .navbar__actions {
+        display: none;
+      }
+
+      .navbar__hamburger {
+        display: block;
+      }
+
+      /* Hero: full-bleed bg image, single column */
+      .hero {
+        padding: 64px 20px 72px;
+      }
+
+      .hero__copy {
+        max-width: 100%;
+      }
+
+      .hero__headline {
+        font-size: 32px;
+      }
+
+      .hero__subhead {
+        font-size: 16px;
+        max-width: 100%;
+      }
+
+      /* Readiness: scale down */
+      .readiness {
+        padding: 56px 20px 64px;
+      }
+
+      .readiness__title {
+        font-size: 32px;
+      }
+
+      .readiness__subtext {
+        font-size: 16px;
+      }
+
+      /* Mobile stepper: compact row of circles, connectors hidden */
+      .readiness__steps {
+        gap: 16px;
+        margin-bottom: 36px;
+      }
+
+      .readiness__step-connector {
+        display: none;
+      }
+
+      .readiness__step-circle {
+        width: 32px;
+        height: 32px;
+        font-size: 12px;
+      }
+
+      .readiness__step-label {
+        font-size: 10px;
+      }
+
+      /* Buyer Stages: single column */
+      .stages {
+        padding: 56px 20px 64px;
+      }
+
+      .stages__heading {
+        font-size: 28px;
+        margin-bottom: 40px;
+      }
+
+      .stages__grid {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+
+      /* Articles: single column */
+      .articles-wrap {
+        padding: 56px 20px 64px;
+      }
+
+      .articles-wrap__heading {
+        font-size: 28px;
+      }
+
+      .articles__grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      /* Trust Band: 2×2 grid */
+      .trust {
+        padding: 56px 20px 56px;
+      }
+
+      .trust__grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 28px;
+        margin-bottom: 32px;
+      }
+
+      .trust__stat-icon {
+        width: 36px;
+        height: 36px;
+      }
+
+      .trust__stat-number {
+        font-size: 22px;
+      }
+
+      .trust__stat-label {
+        font-size: 13px;
+      }
+
+      /* Footer CTA */
+      .footer-cta {
+        padding: 56px 20px 64px;
+      }
+
+      .footer-cta__headline {
+        font-size: 26px;
+      }
+
+      .footer-cta__subtext {
+        font-size: 15px;
+      }
+
+      /* Main Footer: single column stack */
+      .site-footer {
+        padding: 48px 20px 0;
+      }
+
+      .site-footer__top {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- ── NAVBAR ─────────────────────────────────────────────── -->
+  <nav class="navbar" aria-label="Main navigation">
+    <div class="navbar__inner">
+
+      <a href="https://www.atlanticcoastmortgage.com" class="logo" aria-label="Atlantic Coast Mortgage — Home">
+        <svg class="logo__badge" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs>
+            <linearGradient id="acm-nav-bg" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#0A50B1"/>
+              <stop offset="100%" stop-color="#1868EC"/>
+            </linearGradient>
+          </defs>
+          <rect width="100" height="100" rx="4" fill="url(#acm-nav-bg)"/>
+          <rect x="9" y="9" width="82" height="82" fill="none" stroke="#fff" stroke-width="4.5"/>
+          <text x="50" y="50" fill="#fff" font-family="Open Sans,Arial Black,sans-serif" font-weight="700" font-size="24" text-anchor="middle" dominant-baseline="middle" letter-spacing="3">ACM</text>
+        </svg>
+        <span class="logo__text">Atlantic Coast<br>Mortgage</span>
+      </a>
+
+      <ul class="navbar__nav" role="list">
+        <li><a href="https://www.atlanticcoastmortgage.com/find-a-loan-officer/">Find a Mortgage Pro</a></li>
+        <li><a href="https://www.atlanticcoastmortgage.com/purchase/">Home Financing</a></li>
+        <li><a href="https://www.atlanticcoastmortgage.com/about/">About</a></li>
+        <li><a href="#" class="active" aria-current="page">Education</a></li>
+        <li><a href="https://www.atlanticcoastmortgage.com/contact/">Contact</a></li>
+      </ul>
+
+      <div class="navbar__actions">
+        <a href="https://www.atlanticcoastmortgage.com/myloan/" class="portal-link">Customer Portal Login</a>
+        <a href="https://apply.acmllc.com/#/create-account?loginMethod=email" class="btn-apply">Apply Now</a>
+      </div>
+
+      <span class="navbar__hamburger" aria-hidden="true">&#9776;</span>
+
+    </div>
+  </nav>
+
+  <!-- ── PHASE 2: Hero ──────────────────────────────────────── -->
+  <section id="hero">
+    <div class="hero">
+      <div class="hero__inner">
+
+        <div class="hero__copy">
+          <span class="hero__eyebrow">Simple. Easy. Stress-Free.</span>
+          <h1 class="hero__headline">Know Before You Buy.<br>Succeed When You Close.</h1>
+          <p class="hero__subhead">Straightforward mortgage education for every stage of your homebuying journey.</p>
+          <a href="#" class="btn-hero-cta">Explore the Education Hub</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PHASE 2: Readiness Teaser ─────────────────────────── -->
+  <section id="readiness">
+    <div class="readiness">
+      <div class="readiness__inner">
+
+        <!-- Decorative questionnaire step-indicator (non-functional) -->
+        <div class="readiness__steps" aria-hidden="true">
+          <div class="readiness__step">
+            <div class="readiness__step-circle">1</div>
+            <span class="readiness__step-label">Credit &amp; Income</span>
+          </div>
+          <div class="readiness__step-connector"></div>
+          <div class="readiness__step">
+            <div class="readiness__step-circle">2</div>
+            <span class="readiness__step-label">Down Payment</span>
+          </div>
+          <div class="readiness__step-connector"></div>
+          <div class="readiness__step">
+            <div class="readiness__step-circle">3</div>
+            <span class="readiness__step-label">Loan Readiness</span>
+          </div>
+        </div>
+
+        <h2 class="readiness__title">Am I Mortgage-Ready?</h2>
+        <p class="readiness__subtext">Answer a few questions and get a clear picture of where you stand — before you ever talk to a lender.</p>
+        <a href="#" class="btn-readiness-cta">Check My Readiness &rarr;</a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PHASE 3: Content by Buyer Stage ───────────────────── -->
+  <section id="buyer-stages">
+    <div class="stages">
+      <div class="stages__inner">
+
+        <h2 class="stages__heading" data-reveal>Learn at Every Stage</h2>
+
+        <div class="stages__grid">
+
+          <!-- Column 1 — Pre-Qualification -->
+          <div class="stages__col" data-reveal data-delay="1">
+            <div class="stages__icon" aria-hidden="true">
+              <!-- Document with checklist -->
+              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="8" y="4" width="28" height="40" rx="3" stroke="currentColor" stroke-width="2.5"/>
+                <path d="M14 17l4 4 7-8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <line x1="28" y1="19" x2="33" y2="19" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                <path d="M14 28l4 4 7-8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <line x1="28" y1="30" x2="33" y2="30" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                <line x1="14" y1="39" x2="33" y2="39" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3 class="stages__col-title">Pre-Qualification</h3>
+            <p class="stages__col-desc">Understand your credit, income, and debt before you apply.</p>
+            <ul class="stages__topics">
+              <li><a href="#">What's a DTI ratio?</a></li>
+              <li><a href="#">How credit scores affect your rate</a></li>
+              <li><a href="#">How much can I actually afford?</a></li>
+              <li><a href="#">Getting pre-qualified vs. pre-approved</a></li>
+            </ul>
+            <div class="stages__tags">
+              <span class="tag">First-time buyers</span>
+              <span class="tag">Students</span>
+            </div>
+          </div>
+
+          <!-- Column 2 — Shopping for a Loan -->
+          <div class="stages__col" data-reveal data-delay="2">
+            <div class="stages__icon" aria-hidden="true">
+              <!-- House with magnifying glass -->
+              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 27L22 10l17 17" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M9 25v17h26V25" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <rect x="17" y="31" width="10" height="11" rx="1" stroke="currentColor" stroke-width="2.5"/>
+                <circle cx="37" cy="13" r="6" stroke="currentColor" stroke-width="2.5"/>
+                <line x1="41.5" y1="17.5" x2="45" y2="21" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3 class="stages__col-title">Shopping for a Loan</h3>
+            <p class="stages__col-desc">Compare loan types, rates, and lenders with confidence.</p>
+            <ul class="stages__topics">
+              <li><a href="#">Fixed vs. adjustable rate mortgages</a></li>
+              <li><a href="#">Understanding your Loan Estimate</a></li>
+              <li><a href="#">FHA, VA, and conventional loans</a></li>
+              <li><a href="#">Rate locks explained</a></li>
+            </ul>
+            <div class="stages__tags">
+              <span class="tag">Young professionals</span>
+              <span class="tag">Move-up buyers</span>
+            </div>
+          </div>
+
+          <!-- Column 3 — The Closing Process -->
+          <div class="stages__col" data-reveal data-delay="3">
+            <div class="stages__icon" aria-hidden="true">
+              <!-- Document with signature line -->
+              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="8" y="4" width="28" height="40" rx="3" stroke="currentColor" stroke-width="2.5"/>
+                <line x1="14" y1="15" x2="30" y2="15" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                <line x1="14" y1="23" x2="30" y2="23" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                <line x1="14" y1="31" x2="22" y2="31" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                <path d="M25 36 Q27 33 29 35 Q31 37 33 34" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                <line x1="24" y1="38" x2="34" y2="38" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3 class="stages__col-title">The Closing Process</h3>
+            <p class="stages__col-desc">Know what to expect from contract to closing day — so nothing catches you off guard.</p>
+            <ul class="stages__topics">
+              <li><a href="#">Understanding your Closing Disclosure</a></li>
+              <li><a href="#">What to bring to closing day</a></li>
+              <li><a href="#">Title insurance explained</a></li>
+              <li><a href="#">What not to do before closing</a></li>
+            </ul>
+            <div class="stages__tags">
+              <span class="tag">First-time buyers</span>
+              <span class="tag">Move-up buyers</span>
+            </div>
+          </div>
+
+          <!-- Column 4 — Post-Close & Ownership -->
+          <div class="stages__col" data-reveal data-delay="4">
+            <div class="stages__icon" aria-hidden="true">
+              <!-- Key -->
+              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="14" cy="18" r="10" stroke="currentColor" stroke-width="2.5"/>
+                <circle cx="14" cy="18" r="4" stroke="currentColor" stroke-width="2"/>
+                <line x1="22" y1="25" x2="44" y2="44" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                <line x1="35" y1="37" x2="39" y2="33" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                <line x1="30" y1="42" x2="34" y2="38" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3 class="stages__col-title">Post-Close &amp; Ownership</h3>
+            <p class="stages__col-desc">What happens after closing — equity, refinancing, and more.</p>
+            <ul class="stages__topics">
+              <li><a href="#">Reading your first mortgage statement</a></li>
+              <li><a href="#">Building equity faster</a></li>
+              <li><a href="#">When to refinance</a></li>
+              <li><a href="#">Tax benefits of homeownership</a></li>
+            </ul>
+            <div class="stages__tags">
+              <span class="tag">Existing homeowners</span>
+              <span class="tag">Investors</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PHASE 3: Featured Articles ────────────────────────── -->
+  <section id="articles">
+    <div class="articles-wrap">
+      <div class="articles-wrap__inner">
+
+        <h2 class="articles-wrap__heading" data-reveal>Homebuying Made Simple</h2>
+        <p class="articles-wrap__subhead" data-reveal data-delay="1">Mortgage tips, trends, and insights — written for real buyers.</p>
+
+        <div class="articles__grid">
+
+          <!-- Card 1 -->
+          <div class="article-card" data-reveal data-delay="1">
+            <div class="article-card__image">
+              <img src="pre-qual.jpg" alt="Young professional reviewing financial documents on laptop">
+            </div>
+            <div class="article-card__body">
+              <span class="article-card__category">Pre-Qualification</span>
+              <h3 class="article-card__title">5 Things to Check Before You Apply for a Mortgage</h3>
+              <p class="article-card__excerpt">Your credit score is just the starting point. Here's what else matters.</p>
+              <a href="#" class="article-card__link">Read more &rarr;</a>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="article-card" data-reveal data-delay="2">
+            <div class="article-card__image">
+              <img src="loan-types.jpg" alt="Diverse couple meeting with a loan officer across a desk">
+            </div>
+            <div class="article-card__body">
+              <span class="article-card__category">Loan Types</span>
+              <h3 class="article-card__title">FHA vs. Conventional: Which Loan Is Right for You?</h3>
+              <p class="article-card__excerpt">Breaking down the real differences — and when each one wins.</p>
+              <a href="#" class="article-card__link">Read more &rarr;</a>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="article-card" data-reveal data-delay="3">
+            <div class="article-card__image">
+              <img src="post-close.jpg" alt="Family unpacking boxes in a bright new home">
+            </div>
+            <div class="article-card__body">
+              <span class="article-card__category">Post-Close</span>
+              <h3 class="article-card__title">Your First Month as a Homeowner: What to Expect</h3>
+              <p class="article-card__excerpt">From your first mortgage statement to setting up escrow payments.</p>
+              <a href="#" class="article-card__link">Read more &rarr;</a>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="article-card" data-reveal data-delay="4">
+            <div class="article-card__image">
+              <img src="market-trends.jpg" alt="Aerial view of a suburban neighborhood at golden hour">
+            </div>
+            <div class="article-card__body">
+              <span class="article-card__category">Market Trends</span>
+              <h3 class="article-card__title">How Rising Rates Affect Your Buying Power</h3>
+              <p class="article-card__excerpt">A straightforward look at rate movement and what it means for buyers.</p>
+              <a href="#" class="article-card__link">Read more &rarr;</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PHASE 4: Trust / Credibility Band ────────────────── -->
+  <section id="trust">
+    <div class="trust">
+      <div class="trust__inner">
+
+        <div class="trust__grid">
+
+          <!-- Stat 1 — Years serving -->
+          <div class="trust__stat" data-reveal data-delay="1">
+            <div class="trust__stat-icon" aria-hidden="true">
+              <svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="22" cy="22" r="19" stroke="currentColor" stroke-width="2.5"/>
+                <path d="M22 11v11l7 4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div>
+              <div class="trust__stat-number">15+ Years</div>
+              <div class="trust__stat-label">Serving Homebuyers</div>
+            </div>
+          </div>
+
+          <!-- Stat 2 — Loans closed -->
+          <div class="trust__stat" data-reveal data-delay="2">
+            <div class="trust__stat-icon" aria-hidden="true">
+              <svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="6" y="14" width="32" height="24" rx="3" stroke="currentColor" stroke-width="2.5"/>
+                <path d="M6 20h32" stroke="currentColor" stroke-width="2.5"/>
+                <path d="M14 6l-4 8M30 6l4 8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                <path d="M15 29l4 4 10-8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div>
+              <div class="trust__stat-number">[X,XXX] Loans</div>
+              <div class="trust__stat-label">Closed Across the Mid-Atlantic</div>
+            </div>
+          </div>
+
+          <!-- Stat 3 — States licensed -->
+          <div class="trust__stat" data-reveal data-delay="3">
+            <div class="trust__stat-icon" aria-hidden="true">
+              <svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M22 4C13.163 4 6 11.163 6 20c0 12 16 20 16 20s16-8 16-20C38 11.163 30.837 4 22 4z" stroke="currentColor" stroke-width="2.5"/>
+                <circle cx="22" cy="20" r="5" stroke="currentColor" stroke-width="2.5"/>
+              </svg>
+            </div>
+            <div>
+              <div class="trust__stat-number">40+ States</div>
+              <div class="trust__stat-label">Licensed Nationwide</div>
+            </div>
+          </div>
+
+          <!-- Stat 4 — Rating -->
+          <div class="trust__stat" data-reveal data-delay="4">
+            <div class="trust__stat-icon" aria-hidden="true">
+              <svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M22 5l4.5 9 10 1.5-7.25 7 1.75 10L22 28l-9 4.5 1.75-10L7.5 15.5l10-1.5L22 5z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div>
+              <div class="trust__stat-number">A+ Rated</div>
+              <div class="trust__stat-label">by [Placeholder Agency]</div>
+            </div>
+          </div>
+
+        </div>
+
+        <p class="trust__disclaimer">Data shown is illustrative. Final figures to be confirmed with ACM team.</p>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PHASE 4: Footer CTA Band ───────────────────────────── -->
+  <section id="footer-cta">
+    <div class="footer-cta">
+      <div class="footer-cta__inner">
+        <h2 class="footer-cta__headline" data-reveal>Have questions? Talk to a loan officer.</h2>
+        <p class="footer-cta__subtext" data-reveal data-delay="1">No pressure — just answers. Our team is here to help you move forward.</p>
+        <a href="#" class="btn-footer-cta" data-reveal data-delay="2">Find My Loan Officer</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PHASE 4: Main Footer ───────────────────────────────── -->
+  <footer id="footer">
+    <div class="site-footer">
+      <div class="site-footer__inner">
+
+        <div class="site-footer__top">
+
+          <!-- Logo (white variant) -->
+          <a href="https://www.atlanticcoastmortgage.com" class="logo logo--footer" aria-label="Atlantic Coast Mortgage — Home">
+            <svg class="logo__badge" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <defs>
+                <linearGradient id="acm-foot-bg" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#0A50B1"/>
+                  <stop offset="100%" stop-color="#1868EC"/>
+                </linearGradient>
+              </defs>
+              <rect width="100" height="100" rx="4" fill="url(#acm-foot-bg)"/>
+              <rect x="9" y="9" width="82" height="82" fill="none" stroke="#fff" stroke-width="4.5"/>
+              <text x="50" y="50" fill="#fff" font-family="Open Sans,Arial Black,sans-serif" font-weight="700" font-size="24" text-anchor="middle" dominant-baseline="middle" letter-spacing="3">ACM</text>
+            </svg>
+            <span class="logo__text">Atlantic Coast<br>Mortgage</span>
+          </a>
+
+          <!-- Column: Company -->
+          <div>
+            <p class="site-footer__col-heading">Company</p>
+            <ul class="site-footer__links">
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Careers</a></li>
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">Press</a></li>
+            </ul>
+          </div>
+
+          <!-- Column: Loan Products -->
+          <div>
+            <p class="site-footer__col-heading">Loan Products</p>
+            <ul class="site-footer__links">
+              <li><a href="#">Conventional</a></li>
+              <li><a href="#">FHA</a></li>
+              <li><a href="#">VA</a></li>
+              <li><a href="#">Jumbo</a></li>
+            </ul>
+          </div>
+
+          <!-- Column: Legal -->
+          <div>
+            <p class="site-footer__col-heading">Legal</p>
+            <ul class="site-footer__links">
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Terms of Use</a></li>
+              <li><a href="#">Accessibility</a></li>
+              <li><a href="#">NMLS Consumer Access</a></li>
+            </ul>
+          </div>
+
+        </div>
+
+        <div class="site-footer__bottom">
+          &copy; 2026 Atlantic Coast Mortgage. All rights reserved. | NMLS #643114
+        </div>
+
+      </div>
+    </div>
+  </footer>
+
+
+  <script>
+    (function () {
+      var els = document.querySelectorAll('[data-reveal]');
+      if (!('IntersectionObserver' in window)) {
+        els.forEach(function (el) { el.classList.add('is-visible'); });
+        return;
+      }
+      var obs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) {
+            e.target.classList.add('is-visible');
+            obs.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      els.forEach(function (el) { obs.observe(el); });
+    })();
+  </script>
+
+</body>
+</html>
