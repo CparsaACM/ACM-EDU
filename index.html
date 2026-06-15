@@ -596,6 +596,8 @@
       color: var(--color-accent);
       flex-shrink: 0;
       margin-top: 2px;
+      transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+                  filter 0.28s ease;
     }
 
     .trust__stat-icon svg {
@@ -610,6 +612,7 @@
       font-size: 32px;
       line-height: 1.1;
       margin-bottom: 4px;
+      font-variant-numeric: tabular-nums;
     }
 
     .trust__stat-label {
@@ -624,8 +627,6 @@
       color: rgba(255, 255, 255, 0.60);
       font-family: "Open Sans", sans-serif;
       font-size: 12px;
-      border-top: 1px solid rgba(255, 255, 255, 0.10);
-      padding-top: 24px;
     }
 
     /* ─── FOOTER CTA BAND ────────────────────────────────────── */
@@ -920,17 +921,106 @@
 
     /* ─── TRUST SECTION DEPTH ────────────────────────────── */
     #trust { position: relative; overflow: hidden; }
+
+    /* Ring 1 — top-left, slow pulse */
     #trust::before {
       content: '';
       position: absolute;
-      top: -60px; left: -60px;
-      width: 300px; height: 300px;
+      top: -70px; left: -70px;
+      width: 340px; height: 340px;
       border-radius: 50%;
-      border: 1px solid rgba(255,255,255,0.05);
-      box-shadow: 0 0 0 80px rgba(255,255,255,0.015);
+      border: 1px solid rgba(255,255,255,0.06);
+      box-shadow: 0 0 0 60px rgba(255,255,255,0.022),
+                  0 0 0 120px rgba(255,255,255,0.010);
       pointer-events: none;
       z-index: 0;
+      animation: trustRingPulse 9s ease-in-out infinite;
     }
+
+    /* Ring 2 — bottom-right, offset phase */
+    #trust::after {
+      content: '';
+      position: absolute;
+      bottom: -90px; right: -90px;
+      width: 380px; height: 380px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.04);
+      box-shadow: 0 0 0 70px rgba(255,255,255,0.015),
+                  0 0 0 140px rgba(255,255,255,0.007);
+      pointer-events: none;
+      z-index: 0;
+      animation: trustRingPulse 12s ease-in-out 3s infinite;
+    }
+
+    @keyframes trustRingPulse {
+      0%, 100% { opacity: 0.5; transform: scale(0.97); }
+      50%       { opacity: 1;   transform: scale(1.03); }
+    }
+
+    /* Parallax glow orb — JS drives the translate */
+    .trust__glow-orb {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 560px; height: 560px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(10,80,177,0.38) 0%, rgba(0,46,95,0) 68%);
+      pointer-events: none;
+      z-index: 0;
+      will-change: transform;
+    }
+
+    /* One-time shimmer sweep (class added once by IO) */
+    .trust__shimmer {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 2;
+      background: linear-gradient(
+        105deg,
+        transparent 25%,
+        rgba(255,255,255,0.055) 50%,
+        transparent 75%
+      );
+      background-size: 260% 100%;
+      background-position: 220% 0;
+      opacity: 0;
+    }
+    .trust__shimmer.is-animating {
+      animation: trustShimmer 1.5s cubic-bezier(0.4, 0, 0.2, 1) 0.3s forwards;
+    }
+    @keyframes trustShimmer {
+      0%   { background-position: 220% 0; opacity: 1; }
+      80%  { opacity: 1; }
+      100% { background-position: -80% 0; opacity: 0; }
+    }
+
+    /* Animated horizontal divider */
+    .trust__divider {
+      height: 1px;
+      background: rgba(255,255,255,0.10);
+      width: 0;
+      margin-bottom: 24px;
+      transition: width 1.1s cubic-bezier(0.22, 1, 0.36, 1) 0.5s;
+    }
+    .trust__divider.is-visible { width: 100%; }
+
+    /* SVG stroke-draw — dashoffset animated in by JS */
+    .trust__stat-icon svg path,
+    .trust__stat-icon svg circle,
+    .trust__stat-icon svg rect {
+      transition: stroke-dashoffset 1.1s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    /* Icon hover — green glow + scale */
+    .trust__stat-icon:hover {
+      transform: scale(1.14);
+      filter: drop-shadow(0 0 8px rgba(69,206,134,0.65));
+    }
+
+    /* Whole-block hover lift */
+    .trust__stat:hover { transform: translateY(-6px); }
+
     .trust { position: relative; z-index: 1; }
 
     /* ─── NARROW TABLET: ease stage-col padding ─────────────── */
@@ -951,6 +1041,17 @@
       .readiness__step-circle {
         animation: none;
       }
+      /* Trust band — skip to final state */
+      #trust::before, #trust::after    { animation: none; }
+      .trust__shimmer                   { display: none; }
+      .trust__glow-orb                  { display: none; }
+      .trust__divider                   { width: 100%; transition: none; }
+      .trust__stat:hover                { transform: none; }
+      .trust__stat-icon                 { transition: none; }
+      .trust__stat-icon:hover           { transform: none; filter: none; }
+      .trust__stat-icon svg path,
+      .trust__stat-icon svg circle,
+      .trust__stat-icon svg rect        { transition: none; stroke-dashoffset: 0 !important; }
     }
 
     /* ─── MOBILE (<768px) ────────────────────────────────────── */
@@ -1272,13 +1373,32 @@
           <!-- Column 4 — Post-Close & Ownership -->
           <div class="stages__col" data-reveal data-delay="4">
             <div class="stages__icon" aria-hidden="true">
-              <!-- Key -->
+              <!-- Keychain -->
               <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="14" cy="18" r="10" stroke="currentColor" stroke-width="2.5"/>
-                <circle cx="14" cy="18" r="4" stroke="currentColor" stroke-width="2"/>
-                <line x1="22" y1="25" x2="44" y2="44" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-                <line x1="35" y1="37" x2="39" y2="33" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-                <line x1="30" y1="42" x2="34" y2="38" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                <!-- Keychain ring at top center -->
+                <circle cx="24" cy="7" r="5" stroke="currentColor" stroke-width="2.5"/>
+                <!-- Chain: ring bottom → split point -->
+                <line x1="24" y1="12" x2="24" y2="18" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                <!-- Horizontal split bar -->
+                <line x1="16" y1="18" x2="32" y2="18" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                <!-- Left drop to key bow -->
+                <line x1="16" y1="18" x2="16" y2="22" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                <!-- Left key bow -->
+                <circle cx="16" cy="27" r="5" stroke="currentColor" stroke-width="2.5"/>
+                <circle cx="16" cy="27" r="2" stroke="currentColor" stroke-width="1.8"/>
+                <!-- Left key shaft + teeth -->
+                <line x1="16" y1="32" x2="16" y2="44" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                <line x1="16" y1="36" x2="20" y2="36" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <line x1="16" y1="40" x2="20" y2="40" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <!-- Right drop to key bow -->
+                <line x1="32" y1="18" x2="32" y2="22" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                <!-- Right key bow -->
+                <circle cx="32" cy="27" r="5" stroke="currentColor" stroke-width="2.5"/>
+                <circle cx="32" cy="27" r="2" stroke="currentColor" stroke-width="1.8"/>
+                <!-- Right key shaft + teeth (mirrored) -->
+                <line x1="32" y1="32" x2="32" y2="44" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                <line x1="32" y1="36" x2="28" y2="36" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <line x1="32" y1="40" x2="28" y2="40" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
               </svg>
             </div>
             <h3 class="stages__col-title">Post-Close &amp; Ownership</h3>
@@ -1369,6 +1489,8 @@
 
   <!-- ── PHASE 4: Trust / Credibility Band ────────────────── -->
   <section id="trust">
+    <div class="trust__glow-orb" aria-hidden="true"></div>
+    <div class="trust__shimmer" aria-hidden="true"></div>
     <div class="trust">
       <div class="trust__inner">
 
@@ -1383,7 +1505,7 @@
               </svg>
             </div>
             <div>
-              <div class="trust__stat-number">15+ Years</div>
+              <div class="trust__stat-number" data-count="15"><span class="trust__stat-num">15</span>+ Years</div>
               <div class="trust__stat-label">Serving Homebuyers</div>
             </div>
           </div>
@@ -1399,7 +1521,7 @@
               </svg>
             </div>
             <div>
-              <div class="trust__stat-number">[X,XXX] Loans</div>
+              <div class="trust__stat-number" data-count="5800"><span class="trust__stat-num">5,800</span> Loans</div>
               <div class="trust__stat-label">Closed Across the Mid-Atlantic</div>
             </div>
           </div>
@@ -1413,7 +1535,7 @@
               </svg>
             </div>
             <div>
-              <div class="trust__stat-number">40+ States</div>
+              <div class="trust__stat-number" data-count="40"><span class="trust__stat-num">40</span>+ States</div>
               <div class="trust__stat-label">Licensed Nationwide</div>
             </div>
           </div>
@@ -1433,6 +1555,7 @@
 
         </div>
 
+        <div class="trust__divider" aria-hidden="true"></div>
         <p class="trust__disclaimer">Data shown is illustrative. Final figures to be confirmed with ACM team.</p>
 
       </div>
@@ -1534,6 +1657,134 @@
       }, { threshold: 0.12 });
       els.forEach(function (el) { obs.observe(el); });
     })();
+  </script>
+
+  <script>
+    /* ── Trust Band Animations ─────────────────────────────────────── */
+    (function () {
+      'use strict';
+
+      var section = document.getElementById('trust');
+      if (!section) return;
+
+      var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      var stats   = Array.prototype.slice.call(section.querySelectorAll('.trust__stat'));
+      var divider = section.querySelector('.trust__divider');
+      var shimmer = section.querySelector('.trust__shimmer');
+      var glowOrb = section.querySelector('.trust__glow-orb');
+
+      /* ── Stroke-draw: set initial dasharray/offset before IO fires ── */
+      function initStrokeDraw() {
+        stats.forEach(function (stat) {
+          var paths = stat.querySelectorAll(
+            '.trust__stat-icon svg path, .trust__stat-icon svg circle, .trust__stat-icon svg rect'
+          );
+          paths.forEach(function (p) {
+            var len = 60;
+            try { if (p.getTotalLength) len = p.getTotalLength(); } catch (e) {}
+            p.style.strokeDasharray  = len;
+            p.style.strokeDashoffset = len;
+          });
+        });
+      }
+
+      /* ── Count-up with easeOutCubic, 1.4 s ─────────────────────── */
+      function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
+
+      function runCountUp(numEl) {
+        var target = parseInt(numEl.getAttribute('data-count'), 10);
+        var span   = numEl.querySelector('.trust__stat-num');
+        if (!span || !target) return;
+        var start = null;
+        var dur   = 1400;
+        function tick(ts) {
+          if (!start) start = ts;
+          var progress = Math.min((ts - start) / dur, 1);
+          span.textContent = Math.round(easeOutCubic(progress) * target).toLocaleString('en-US');
+          if (progress < 1) requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+      }
+
+      /* ── On-enter sequence ──────────────────────────────────────── */
+      function onEnter() {
+        if (shimmer) shimmer.classList.add('is-animating');
+        if (divider) divider.classList.add('is-visible');
+
+        stats.forEach(function (stat, i) {
+          var delay = i * 120;
+
+          /* Stroke-draw per stat */
+          if (!prefersReduced) {
+            (function (s, d) {
+              setTimeout(function () {
+                s.querySelectorAll(
+                  '.trust__stat-icon svg path, .trust__stat-icon svg circle, .trust__stat-icon svg rect'
+                ).forEach(function (p) { p.style.strokeDashoffset = '0'; });
+              }, d);
+            }(stat, delay));
+          }
+
+          /* Count-up — only on elements with data-count */
+          var numEl = stat.querySelector('.trust__stat-number[data-count]');
+          if (numEl && !prefersReduced) {
+            (function (el, d) {
+              setTimeout(function () { runCountUp(el); }, d + 180);
+            }(numEl, delay));
+          }
+        });
+      }
+
+      /* ── IntersectionObserver: 35% threshold, fires once ───────── */
+      if (!('IntersectionObserver' in window)) {
+        onEnter();
+      } else {
+        if (!prefersReduced) initStrokeDraw();
+
+        var trustObs = new IntersectionObserver(function (entries) {
+          if (entries[0].isIntersecting) {
+            onEnter();
+            trustObs.disconnect();
+          }
+        }, { threshold: 0.35 });
+
+        trustObs.observe(section);
+      }
+
+      /* ── Mouse parallax: rAF-throttled, desktop only ────────────── */
+      if (glowOrb && !prefersReduced) {
+        var isTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+        if (!isTouch) {
+          var targetX = 0, targetY = 0, curX = 0, curY = 0, rafId = null;
+
+          section.addEventListener('mousemove', function (e) {
+            var r = section.getBoundingClientRect();
+            targetX = ((e.clientX - r.left) / r.width  - 0.5) * 44;
+            targetY = ((e.clientY - r.top)  / r.height - 0.5) * 22;
+            if (!rafId) rafId = requestAnimationFrame(animateOrb);
+          });
+
+          section.addEventListener('mouseleave', function () {
+            targetX = 0; targetY = 0;
+            if (!rafId) rafId = requestAnimationFrame(animateOrb);
+          });
+
+          function animateOrb() {
+            curX += (targetX - curX) * 0.08;
+            curY += (targetY - curY) * 0.08;
+            glowOrb.style.transform =
+              'translate(calc(-50% + ' + curX.toFixed(2) + 'px), calc(-50% + ' + curY.toFixed(2) + 'px))';
+            if (Math.abs(targetX - curX) > 0.05 || Math.abs(targetY - curY) > 0.05) {
+              rafId = requestAnimationFrame(animateOrb);
+            } else {
+              rafId = null;
+            }
+          }
+        }
+      }
+
+    }());
   </script>
 
 </body>
