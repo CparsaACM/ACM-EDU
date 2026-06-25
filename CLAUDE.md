@@ -35,13 +35,11 @@ empty page scaffold. No content sections yet — just the foundation.
 
 2. **Typography** — add to `<head>`:
    ```html
-   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
    ```
-   - Headings: `"Halyard Display", "Open Sans", sans-serif`
-     (Halyard Display is a paid SANS-SERIF font; if it fails to load, fall back
-     to Open Sans — NOT a serif. Do not use Georgia or any serif font, as that
-     would visibly change the brand identity. Use a heavier weight, e.g. 700,
-     on headings to preserve display contrast against body text.)
+   - Headings: `"Halyard Display", Georgia, serif`
+     (Halyard Display is a paid font; if it fails to load, Georgia is the
+     approved fallback — do not swap to another Google Font)
    - Body/Nav: `"Open Sans", sans-serif`
 
 3. **Logo** — recreate in HTML/CSS, no hotlinked assets:
@@ -115,8 +113,8 @@ feel like a distinct, premium module.
   — choose whichever reads as more visually striking
 - Add a purely decorative visual cue suggesting depth: a faint horizontal
   progress-bar strip, a row of 3 soft checklist-icon placeholders, or a
-  card shadow implying a tool beneath. Decorative only — it should hint at a
-  short questionnaire (matching the subtext below) without being a working form.
+  card shadow implying a tool beneath. Decorative only — no labels that
+  imply quiz or calculator format.
 
   ```
   Title (Halyard Display, large, white or navy):
@@ -239,7 +237,7 @@ Full-width, `background: #002E5F`, white text.
 Four stat blocks in a row (desktop) / 2×2 grid (mobile):
 
 ```
-[Icon] [XX]+ Years          [Icon] [X,XXX] Loans Closed
+[Icon] 20+ Years            [Icon] [X,XXX] Loans Closed
        Serving Homebuyers          Across the Mid-Atlantic
 
 [Icon] Licensed in          [Icon] A+ Rated
@@ -293,8 +291,8 @@ only fix existing markup and styles.
 - [ ] All image placeholder `<div>`s have the blue overlay and white caption
 - [ ] No `<img>` tags with broken or external `src` attributes
 - [ ] All buttons/links are visually styled and use `href="#"`
-- [ ] Fonts: Halyard Display (or Open Sans sans-serif fallback) on all headings;
-      Open Sans on all body/nav text — no serif fallback anywhere
+- [ ] Fonts: Halyard Display (or Georgia fallback) on all headings;
+      Open Sans on all body/nav text
 - [ ] CSS variables used consistently — no hardcoded hex values outside `:root`
 - [ ] "Education" remains the active nav item
 - [ ] Footer NMLS placeholder is present
